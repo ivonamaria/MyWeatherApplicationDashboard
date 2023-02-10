@@ -1,3 +1,4 @@
+// Selecting the search button, list of cities, input, current weather, weather cards container, and city button
 let searchButton = document.querySelector('#search-button');
 let listOfCities = document.querySelector('.input-group-append');
 let input = document.querySelector('#search-input');
@@ -10,49 +11,47 @@ const API_LINK = 'https://api.openweathermap.org/data/2.5/forecast?&q=';
 const API_KEY = '&mode=json&appid=30abde8af5dc54f445196160c7e3f072';
 const API_UNITS = '&units=metric';
 
+// Function to get the weather information for a given city
 const getWeather = () => {
-    const city = input.value || 'London';
-    const URL = API_LINK + city + API_KEY + API_UNITS;
+  // Get the value of the city input or default to London
+  const city = input.value || 'London'
+  const URL = API_LINK + city + API_KEY + API_UNITS
 
-    axios.get(URL)
-        .then(res => {
-            console.log(res.data);
-            let today = res.data.list[0];
-            let todayWeather = `${Math.floor(today.main.temp)}°C, ${today.weather[0].description}`;
-            currentWeather.innerHTML = todayWeather;
+  // Make an API call to get the weather data
+  axios.get(URL).then(res => {
+    // Log the data to the console
+    console.log(res.data)
+    console.log(res.data.list[0].main.temp)
+    console.log(res.data.list[0].wind.speed)
+    console.log(res.data.list[0].main.humidity)
 
-            let weatherCards = '';
-            for (let i = 1; i < 6; i++) {
-                let day = res.data.list[i];
-                weatherCards += 
-                `<div class="col-sm-2"> 
-                    <div class="card text-white bg-primary mb-3"> 
-                        <div class="card-header">${day.dt_txt}</div> 
-                        <div class="card-body"> 
-                            <h5 class="card-title">${Math.floor(day.main.temp)}°C</h5> 
-                            <p class="card-text">${day.weather[0].description}</p> 
-                        </div> 
-                    </div> 
-                </div>`;
-            }
-            weatherCardsContainer.innerHTML = weatherCards;
-        })
-        .catch(error => {
-            // handle error
-            console.log(error);
-            alert('Unable to fetch weather data for the city. Please try again.');
-        });
-};
+    // Clear the current weather data
+    currentWeather.innerHTML = '';
 
-// Event listeners
-searchButton.addEventListener('click', getWeather);
-input.addEventListener('keyup', event => {
-    if (event.key === 'Enter') {
-        getWeather();
-    }
-});
-cityButton.addEventListener('click', () => {
-    let city = event.target.innerHTML;
-    input.value = city;
-    getWeather();
-});
+    // Create a title element for the city
+    const titleEl = document.createElement('h1');
+    titleEl.textContent = city;
+    currentWeather.appendChild(titleEl);
+
+    // Create a temperature element
+    const temp = document.createElement('p');
+    temp.textContent = "temp: " + res.data.list[0].main.temp + "°C";
+    currentWeather.appendChild(temp);
+
+    // Create a wind element
+    const wind = document.createElement('p');
+    wind.textContent = "wind: " + res.data.list[0].wind.speed;
+    currentWeather.appendChild(wind);
+
+    // Create a humidity element
+    const humidity = document.createElement('p');
+    humidity.textContent = "humidity: " + res.data.list[0].main.humidity;
+    currentWeather.appendChild(humidity);
+  })
+}
+
+
+cityButton.addEventListener('click', function (e) {
+    e.preventDefault()
+    getWeather()
+})

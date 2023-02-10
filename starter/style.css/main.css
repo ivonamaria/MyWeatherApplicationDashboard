@@ -1,0 +1,44 @@
+/* .weather-header {
+    background-color: #f2f2f2;
+}
+
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.weather-search {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.search-button {
+    width: 20%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: rgb(255, 373, 3);
+    color: white;
+    border: none;
+}
+
+.search-button:hover {
+    background-color: #3e8e41;
+    cursor: pointer;
+}
+
+.weather-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    width: 20%;
+    height: 250px;
+    margin-bottom: 20px;
+} */
