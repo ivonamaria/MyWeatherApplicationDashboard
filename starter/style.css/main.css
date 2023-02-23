@@ -1,6 +1,7 @@
-/* .weather-header {
-    background-color: #f2f2f2;
+.weather-header {
+    background-color: #010000;
 }
+
 
 .form-inline {
     display: flex;
@@ -17,18 +18,25 @@
 }
 
 .search-button {
-    width: 20%;
+    margin: 10px 70px;
+    width: 100px;
     padding: 10px;
     font-size: 16px;
     border-radius: 5px;
     background-color: rgb(255, 373, 3);
-    color: white;
+    background-color: rgb(75, 138, 163);
+    color: rgb(0, 0, 0);
+    border-radius: 10% / 50%;
     border: none;
 }
 
 .search-button:hover {
-    background-color: #3e8e41;
+    background-color: #90b3b5;
     cursor: pointer;
+}
+
+button {
+    background-color: #fff;
 }
 
 .weather-cards-container {
@@ -41,4 +49,4 @@
     width: 20%;
     height: 250px;
     margin-bottom: 20px;
-} */
+}
