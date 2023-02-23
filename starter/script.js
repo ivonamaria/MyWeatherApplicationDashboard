@@ -1,4 +1,5 @@
-// Selecting the search button, list of cities, input, current weather, weather cards container, and city button
+
+// <!-- Selecting the search button, list of cities, input, current weather, weather cards container, and city button -->
 let searchButton = document.querySelector('#search-button');
 let listOfCities = document.querySelector('.input-group-append');
 let input = document.querySelector('#search-input');
@@ -14,7 +15,7 @@ const API_UNITS = '&units=metric';
 // Function to get the weather information for a given city
 const getWeather = () => {
   // Get the value of the city input or default to London
-  const city = input.value || 'London'
+  const city = input.value || 'Your City'
   const URL = API_LINK + city + API_KEY + API_UNITS
 
   // Make an API call to get the weather data
@@ -28,9 +29,9 @@ const getWeather = () => {
     // Clear the current weather data
     currentWeather.innerHTML = '';
 
-    // Create a title element for the city
+    // Create a title element for the city with the current date
     const titleEl = document.createElement('h1');
-    titleEl.textContent = city;
+    titleEl.textContent = `${city} (${moment().format('MMM D, YYYY')})`;
     currentWeather.appendChild(titleEl);
 
     // Create a temperature element
@@ -40,18 +41,18 @@ const getWeather = () => {
 
     // Create a wind element
     const wind = document.createElement('p');
-    wind.textContent = "wind: " + res.data.list[0].wind.speed;
+    wind.textContent = "wind: " + res.data.list[0].wind.speed + "MPH";
     currentWeather.appendChild(wind);
 
     // Create a humidity element
     const humidity = document.createElement('p');
-    humidity.textContent = "humidity: " + res.data.list[0].main.humidity;
+    humidity.textContent = "humidity: " + res.data.list[0].main.humidity + "%";
     currentWeather.appendChild(humidity);
   })
 }
 
-
 cityButton.addEventListener('click', function (e) {
-    e.preventDefault()
-    getWeather()
+  e.preventDefault()
+  getWeather()
 })
+
