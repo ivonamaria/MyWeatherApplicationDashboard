@@ -29,7 +29,7 @@ const getWeather = () => {
 
     // Create a title element for the city
     const titleEl = document.createElement('h1');
-    titleEl.textContent = city;
+    titleEl.textContent = `${city} (${moment().format('MMM D, YYYY')})`;
     currentWeather.appendChild(titleEl);
 
     // Create a weather icon element

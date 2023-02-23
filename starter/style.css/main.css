@@ -39,6 +39,14 @@ button {
     background-color: #fff;
 }
 
+
+#today {
+    border: #010000 solid 2px;
+    border-radius: 25px;
+    padding: 20px ;
+    background-color: rgb(173, 207, 224);
+}
+
 .weather-cards-container {
     display: flex;
     flex-wrap: wrap;
