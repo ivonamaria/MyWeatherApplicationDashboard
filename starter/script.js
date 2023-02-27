@@ -9,6 +9,11 @@ const cityButton = document.querySelector('#city-button');
 const API_LINK = 'https://api.openweathermap.org/data/2.5/forecast?';
 const API_KEY = '30abde8af5dc54f445196160c7e3f072';
 const API_UNITS = '&units=metric';
+const lat = 37.7749; // example latitude
+const lon = -122.4194; // example longitude
+const forecastURL = `${API_LINK}lat=${lat}&lon=${lon}&appid=${API_KEY}${API_UNITS}`;
+
+
 
 // Function to get the weather information for a given city
 const getWeather = () => {
@@ -39,17 +44,17 @@ const getWeather = () => {
 
     // Create a temperature element with weather icon
     const temp = document.createElement('p');
-    temp.innerHTML = `temp: ${res.data.list[0].main.temp} &#8451; `;
+    temp.innerHTML = `Temp: ${res.data.list[0].main.temp} &#8451; `;
     currentWeather.appendChild(temp);
 
     // Create a wind element with weather icon
     const wind = document.createElement('p');
-    wind.innerHTML = `wind: ${res.data.list[0].wind.speed} mph `;
+    wind.innerHTML = `Wind: ${res.data.list[0].wind.speed} mph `;
     currentWeather.appendChild(wind);
 
     // Create a humidity element with weather icon
     const humidity = document.createElement('p');
-    humidity.innerHTML = `humidity: ${res.data.list[0].main.humidity} % `;
+    humidity.innerHTML = `Humidity: ${res.data.list[0].main.humidity} % `;
     currentWeather.appendChild(humidity);
 
 
@@ -59,14 +64,87 @@ const getWeather = () => {
     console.log(error);
     alert('Could not find weather data for the selected city.');
   });
+  
 }
+
+// Function to create a weather card for a given day's forecast data
+function createWeatherCard(forecast) {
+  const date = forecast.dt_txt.split(' ')[0];
+  const time = forecast.dt_txt.split(' ')[1];
+  const temp = forecast.main.temp;
+  const icon = forecast.weather[0].icon;
+  const description = forecast.weather[0].description;
+
+  const card = document.createElement('div');
+  card.classList.add('card', 'mb-3');
+
+  const cardBody = document.createElement('div');
+  cardBody.classList.add('card-body');
+
+  const cardTitle = document.createElement('h5');
+  cardTitle.classList.add('card-title');
+  cardTitle.textContent = date;
+
+  const cardSubtitle = document.createElement('h6');
+  cardSubtitle.classList.add('card-subtitle', 'mb-2', 'text-muted');
+  cardSubtitle.textContent = time;
+
+  const cardTemp = document.createElement('p');
+  cardTemp.classList.add('card-text');
+  cardTemp.textContent = `Temperature: ${temp} °C`;
+
+  const cardIcon = document.createElement('img');
+  cardIcon.src = `https://openweathermap.org/img/w/${icon}.png`;
+  cardIcon.alt = description;
+
+  cardBody.appendChild(cardTitle);
+  cardBody.appendChild(cardSubtitle);
+  cardBody.appendChild(cardTemp);
+  cardBody.appendChild(cardIcon);
+  card.appendChild(cardBody);
+
+  return card;
+}
+
+// Function to display the 5-day weather forecast for a given city
+function displayForecast(cityName) {
+  const forecastURL = `${API_LINK}q=${cityName}&appid=${API_KEY}${API_UNITS}`;
+
+  fetch(forecastURL)
+    .then(response => response.json())
+    .then(data => {
+      const forecastData = data.list.filter(forecast => forecast.dt_txt.includes('12:00:00'));
+
+      const forecastCardsContainer = document.createElement('div');
+      forecastCardsContainer.classList.add('row');
+
+      forecastData.forEach(forecast => {
+        const forecastCard = createWeatherCard(forecast);
+        forecastCardsContainer.appendChild(forecastCard);
+      });
+
+      // Clear the current weather and display the forecast cards
+      currentWeather.innerHTML = '';
+      currentWeather.appendChild(forecastCardsContainer);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
+// Event listener for the city button to display the 5-day weather forecast for the input city
+// cityButton.addEventListener('click', () => {
+//   const cityName = input.value.trim();
+//   displayForecast(cityName);
+// });
 
 searchButton.addEventListener('click', function (e) {
   e.preventDefault();
   getWeather();
 });
 
-cityButton.addEventListener('click', function (e) {
-  e.preventDefault();
-  getWeather();
-});
+// cityButton.addEventListener('click', function (e) {
+//   e.preventDefault();
+//   getWeather();
+// });
+ 
