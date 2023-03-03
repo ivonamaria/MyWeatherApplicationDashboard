@@ -11,10 +11,8 @@ const API_KEY = '30abde8af5dc54f445196160c7e3f072';
 const API_UNITS = '&units=metric';
 const lat = 37.7749; // example latitude
 const lon = -122.4194; // example longitude
-const forecastURL = `${API_LINK}lat=${lat}&lon=${lon}&appid=${API_KEY}${API_UNITS}`;
-
-
-
+const forecastURL = `${API_LINK}lat=44.34&lon=10.99&appid=${API_KEY}${API_UNITS}`;
+console.log(forecastURL)
 // Function to get the weather information for a given city
 const getWeather = () => {
   // Get the value of the city input or default to London
@@ -57,6 +55,7 @@ const getWeather = () => {
     humidity.innerHTML = `Humidity: ${res.data.list[0].main.humidity} % `;
     currentWeather.appendChild(humidity);
 
+    displayForecast(city)
 
     // Clear the input field after search
     input.value = '';
@@ -64,6 +63,7 @@ const getWeather = () => {
     console.log(error);
     alert('Could not find weather data for the selected city.');
   });
+
   
 }
 
@@ -73,6 +73,7 @@ function createWeatherCard(forecast) {
   const time = forecast.dt_txt.split(' ')[1];
   const temp = forecast.main.temp;
   const icon = forecast.weather[0].icon;
+  console.log(forecast.weather.temp)
   const description = forecast.weather[0].description;
 
   const card = document.createElement('div');
@@ -93,6 +94,14 @@ function createWeatherCard(forecast) {
   cardTemp.classList.add('card-text');
   cardTemp.textContent = `Temperature: ${temp} °C`;
 
+  // const cardWind = document.createElement('p');
+  // cardTemp.classList.add('card-text');
+  // cardTemp.textContent = `Wind: ${wind.speed} mph`;
+
+  // const cardHum = document.createElement('p');
+  // cardTemp.classList.add('card-text');
+  // cardTemp.textContent = `Humidity: ${speed} °C`;
+
   const cardIcon = document.createElement('img');
   cardIcon.src = `https://openweathermap.org/img/w/${icon}.png`;
   cardIcon.alt = description;
@@ -108,13 +117,14 @@ function createWeatherCard(forecast) {
 
 // Function to display the 5-day weather forecast for a given city
 function displayForecast(cityName) {
-  const forecastURL = `${API_LINK}q=${cityName}&appid=${API_KEY}${API_UNITS}`;
+  // const forecastURL = `${API_LINK}forecast?q=${cityName}&appid=${API_KEY}${API_UNITS}`;
+  const forecastURL = `${API_LINK}lat=44.34&lon=10.99&appid=${API_KEY}${API_UNITS}`;
 
   fetch(forecastURL)
     .then(response => response.json())
     .then(data => {
       const forecastData = data.list.filter(forecast => forecast.dt_txt.includes('12:00:00'));
-
+console.log(data)
       const forecastCardsContainer = document.createElement('div');
       forecastCardsContainer.classList.add('row');
 
@@ -132,16 +142,17 @@ function displayForecast(cityName) {
     });
 }
 
+searchButton.addEventListener('click', function (e) {
+  e.preventDefault();
+  getWeather();
+});
+
 // Event listener for the city button to display the 5-day weather forecast for the input city
 // cityButton.addEventListener('click', () => {
 //   const cityName = input.value.trim();
 //   displayForecast(cityName);
 // });
 
-searchButton.addEventListener('click', function (e) {
-  e.preventDefault();
-  getWeather();
-});
 
 // cityButton.addEventListener('click', function (e) {
 //   e.preventDefault();

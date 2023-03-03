@@ -58,3 +58,60 @@ button {
     height: 250px;
     margin-bottom: 20px;
 }
+.section {
+    display: none;
+}
+
+.row    {
+ display: flex;
+}
+
+
+div .card {
+    margin-top: 300px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: baseline;
+
+}
+
+
+/* .weather-cards-container {
+    margin-top: 60px;
+    display: block;
+    background-color: #333;
+} */
+
+/* .card-subtitle {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(169, 80, 80);
+} */
+/* 
+p {
+    color: #333;
+} */
+
+/* div .card {
+    /* background-color: rgb(169, 80, 80); */
+    width: 200px;
+    height: 200px;
+} */
+/* const card = document.createElement('div');
+card.classList.add('card', 'mb-3');
+
+const cardBody = document.createElement('div');
+cardBody.classList.add('card-body');
+
+const cardTitle = document.createElement('h5');
+cardTitle.classList.add('card-title');
+cardTitle.textContent = date;
+
+const cardSubtitle = document.createElement('h6');
+cardSubtitle.classList.add('card-subtitle', 'mb-2', 'text-muted');
+cardSubtitle.textContent = time;
+
+const cardTemp = document.createElement('p');
+cardTemp.classList.add('card-text');
+cardTemp.textContent = `Temperature: ${temp} °C`; */
