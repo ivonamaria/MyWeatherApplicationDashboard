@@ -32,8 +32,9 @@
   .search-button {
       padding: 10px;
       font-size: 16px;
-      width: 100px;
-      margin-left: 100px;
+      width: 184px;
+      height: 42px;
+      margin-left: 20px;
       background-color: rgb(146, 192, 210);
       color: rgb(3, 3, 3);
       border: solid 1px rgb(130, 156, 161);

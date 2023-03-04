@@ -150,13 +150,6 @@ searchButton.addEventListener('click', function (e) {
 });
 
 
-
-// cityButton.addEventListener('click', function (e) {
-//   e.preventDefault();
-//   getWeather();
-// });
-
-
 // Event listener for the city button to display the 5-day weather forecast for the input city
 cityButton.addEventListener('click', () => {
   const cityName = input.value.trim();
