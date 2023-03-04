@@ -1,117 +1,126 @@
 .weather-header {
     background-color: #010000;
-}
-
-
-.form-inline {
+    padding: 20px;
+  }
+  
+  .form-inline {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-}
-
-.weather-search {
-    width: 80%;
+    justify-content: center;
+  }
+  
+  .weather-search {
+    margin: 20px;
+    position: relative;
+  }
+  
+  .search-input {
     padding: 10px;
     font-size: 16px;
     border-radius: 5px;
-    border: 1px solid gray;
-}
-
-.search-button {
-    margin: 10px 70px;
-    width: 100px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    background-color: rgb(255, 373, 3);
-    background-color: rgb(75, 138, 163);
-    color: rgb(0, 0, 0);
-    border-radius: 10% / 50%;
     border: none;
-}
+    width: 300px;
+    margin-right: 10px;
+  }
+  
+  h1 {
+    color: #010000;
+  }
 
-.search-button:hover {
-    background-color: #90b3b5;
-    cursor: pointer;
-}
+  
+  .search-button {
+      padding: 10px;
+      font-size: 16px;
+      width: 100px;
+      margin-left: 100px;
+      background-color: rgb(146, 192, 210);
+      color: rgb(3, 3, 3);
+      border: solid 1px rgb(130, 156, 161);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    
+    .search-button:hover {
+        background-color: #90b3b5;
+    }
+     
+ 
+    #today {
+        display: block;
+        border: #efdada solid 2px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 25px;
+        padding: 20px ;
+        background-color: rgb(255, 255, 255, 0.);
+        margin: 20px;
+    }
+    
+    .card {
+        flex: 1;
+        padding: 20px 20px;
+        height: 300px;
+        width: 100%;
+        margin-right: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .weather-cards-container {
+        margin: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: #333;
+    }
+    
+    .card-body {
+        /* background-image: url("/assets/clouds-1282314_1920.jpg");
+        background-repeat: no-repeat;
+        background-size: cover; */
+        padding: 5px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .card-subtitle {
+        margin-bottom: 10px;
+        font-size: 40px;
+        font-weight: bold;
+    }
+    
+    .card-text {
+        margin: 10px 20px;
+        font-size: 16px;
+        line-height: 16px;
+    }
+    
+    .card-icon {
+        font-size: 20px;
+    }
+    
+    img {
+        position: relative; 
+       display: flex;
+        height: 60px;
+        width: 60px;
+    }
+    
+    /* section {
+    } */
+    
+      
+      img {
+        position: relative;
+        display: flex;
+        height: 60px;
+        width: 60px;
+      }
 
-button {
-    background-color: #fff;
-}
-
-
-#today {
-    border: #010000 solid 2px;
-    border-radius: 25px;
-    padding: 20px ;
-    background-color: rgb(173, 207, 224);
-}
-
-.weather-cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.card {
-    width: 20%;
-    height: 250px;
-    margin-bottom: 20px;
-}
-.section {
-    display: none;
-}
-
-.row    {
- display: flex;
-}
-
-
-div .card {
-    margin-top: 300px;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: baseline;
-
-}
-
-
-/* .weather-cards-container {
-    margin-top: 60px;
-    display: block;
-    background-color: #333;
-} */
-
-/* .card-subtitle {
-    width: 200px;
-    height: 200px;
-    background-color: rgb(169, 80, 80);
-} */
-/* 
-p {
-    color: #333;
-} */
-
-/* div .card {
-    /* background-color: rgb(169, 80, 80); */
-    width: 200px;
-    height: 200px;
-} */
-/* const card = document.createElement('div');
-card.classList.add('card', 'mb-3');
-
-const cardBody = document.createElement('div');
-cardBody.classList.add('card-body');
-
-const cardTitle = document.createElement('h5');
-cardTitle.classList.add('card-title');
-cardTitle.textContent = date;
-
-const cardSubtitle = document.createElement('h6');
-cardSubtitle.classList.add('card-subtitle', 'mb-2', 'text-muted');
-cardSubtitle.textContent = time;
-
-const cardTemp = document.createElement('p');
-cardTemp.classList.add('card-text');
-cardTemp.textContent = `Temperature: ${temp} °C`; */
+      #forecast {
+        background-color: #fff;
+      }
+      
+  
