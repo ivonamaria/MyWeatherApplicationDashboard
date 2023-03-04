@@ -12,191 +12,154 @@ const API_UNITS = '&units=metric';
 const lat = 37.7749; // example latitude
 const lon = -122.4194; // example longitude
 const forecastURL = `${API_LINK}lat=44.34&lon=10.99&appid=${API_KEY}${API_UNITS}`;
-console.log(forecastURL);
+console.log(forecastURL)
 // Function to get the weather information for a given city
 const getWeather = () => {
-	// Get the value of the city input or default to London
-	const city = input.value || 'London';
-	const URL = `${API_LINK}q=${city}&appid=${API_KEY}${API_UNITS}`;
+  // Get the value of the city input or default to London
+  const city = input.value || 'London';
+  const URL = `${API_LINK}q=${city}&appid=${API_KEY}${API_UNITS}`;
 
-	// Make an API call to get the weather data
-	axios
-		.get(URL)
-		.then((res) => {
-			// Log the data to the console
-			console.log(res.data);
-			console.log(res.data.list[0].main.temp);
-			console.log(res.data.list[0].wind.speed);
-			console.log(res.data.list[0].main.humidity);
+  // Make an API call to get the weather data
+  axios.get(URL).then(res => {
+    // Log the data to the console
+    console.log(res.data);
+    console.log(res.data.list[0].main.temp);
+    console.log(res.data.list[0].wind.speed);
+    console.log(res.data.list[0].main.humidity);
 
-			// Clear the current weather data
-			currentWeather.innerHTML = '';
+    // Clear the current weather data
+    currentWeather.innerHTML = '';
 
-			// Create a title element for the city
-			const titleEl = document.createElement('h1');
-			titleEl.textContent = `${city} (${moment().format('MMM D, YYYY')})`;
-			currentWeather.appendChild(titleEl);
+    // Create a title element for the city
+    const titleEl = document.createElement('h1');
+    titleEl.textContent = `${city} (${moment().format('MMM D, YYYY')})`;
+    currentWeather.appendChild(titleEl);
 
-			// Create a weather icon element
-			const icon = document.createElement('img');
-			icon.setAttribute(
-				'src',
-				`http://openweathermap.org/img/w/${res.data.list[0].weather[0].icon}.png`
-			);
-			currentWeather.appendChild(icon);
+    // Create a weather icon element
+    const icon = document.createElement('img');
+    icon.setAttribute('src', `http://openweathermap.org/img/w/${res.data.list[0].weather[0].icon}.png`);
+    currentWeather.appendChild(icon);
 
-			// Create a temperature element with weather icon
-			const temp = document.createElement('p');
-			temp.innerHTML = `Temp: ${res.data.list[0].main.temp} &#8451; `;
-			currentWeather.appendChild(temp);
+    // Create a temperature element with weather icon
+    const temp = document.createElement('p');
+    temp.innerHTML = `Temp: ${res.data.list[0].main.temp} &#8451; `;
+    currentWeather.appendChild(temp);
 
-			// Create a wind element with weather icon
-			const wind = document.createElement('p');
-			wind.innerHTML = `Wind: ${res.data.list[0].wind.speed} mph `;
-			currentWeather.appendChild(wind);
+    // Create a wind element with weather icon
+    const wind = document.createElement('p');
+    wind.innerHTML = `Wind: ${res.data.list[0].wind.speed} mph `;
+    currentWeather.appendChild(wind);
 
-			// Create a humidity element with weather icon
-			const humidity = document.createElement('p');
-			humidity.innerHTML = `Humidity: ${res.data.list[0].main.humidity} % `;
-			currentWeather.appendChild(humidity);
+    // Create a humidity element with weather icon
+    const humidity = document.createElement('p');
+    humidity.innerHTML = `Humidity: ${res.data.list[0].main.humidity} % `;
+    currentWeather.appendChild(humidity);
 
-			displayForecast(city);
+    displayForecast(city)
 
-			// Clear the input field after search
-			input.value = '';
-		})
-		.catch((error) => {
-			console.log(error);
-			alert('Could not find weather data for the selected city.');
-		});
-};
+    // Clear the input field after search
+    input.value = '';
+  }).catch(error => {
+    console.log(error);
+    alert('Could not find weather data for the selected city.');
+  });
+  
+}
 // Function to create a weather card for a given day's forecast data
 function createWeatherCard(forecast) {
-	// const date = forecast.dt_txt.split(' ')[0];
-	const dateObj = new Date(forecast.dt_txt);
-	const date = dateObj.toLocaleString('en-US', {
-		month: 'short',
-		day: 'numeric',
-		year: 'numeric',
-	});
+  // const date = forecast.dt_txt.split(' ')[0];
+  const dateObj = new Date(forecast.dt_txt);
+const date = dateObj.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
-	const temperature = Math.round(forecast.main.temp);
-	const icon = forecast.weather[0].icon;
-	const description = forecast.weather[0].description;
-	const windSpeed = forecast.wind.speed;
-	const humidity = forecast.main.humidity;
+  const temperature = Math.round(forecast.main.temp);
+  const icon = forecast.weather[0].icon;
+  const description = forecast.weather[0].description;
+  const windSpeed = forecast.wind.speed;
+  const humidity = forecast.main.humidity;
 
-	const card = document.createElement('div');
-	card.classList.add('card', 'mb-3');
+  const card = document.createElement('div');
+  card.classList.add('card', 'mb-3');
 
-	const cardBody = document.createElement('div');
-	cardBody.classList.add('card-body');
+  const cardBody = document.createElement('div');
+  cardBody.classList.add('card-body');
 
-	const cardTitle = document.createElement('h5');
-	cardTitle.classList.add('card-title');
-	cardTitle.textContent = date;
+  const cardTitle = document.createElement('h5');
+  cardTitle.classList.add('card-title');
+  cardTitle.textContent = date;
 
-	const cardSubtitle = document.createElement('h6');
-	cardSubtitle.classList.add('card-subtitle', 'mb-2', 'text-muted');
+  const cardSubtitle = document.createElement('h6');
+  cardSubtitle.classList.add('card-subtitle', 'mb-2', 'text-muted');
 
-	const cardTemperature = document.createElement('p');
-	cardTemperature.classList.add('card-text');
-	cardTemperature.textContent = `Temp: ${temperature}°C`;
+  const cardTemperature = document.createElement('p');
+  cardTemperature.classList.add('card-text');
+  cardTemperature.textContent = `Temp: ${temperature}°C`;
 
-	const cardWind = document.createElement('p');
-	cardWind.classList.add('card-text');
-	cardWind.textContent = `Wind: ${windSpeed} mph`;
+  const cardWind = document.createElement('p');
+  cardWind.classList.add('card-text');
+  cardWind.textContent = `Wind: ${windSpeed} mph`;
 
-	const cardHumidity = document.createElement('p');
-	cardHumidity.classList.add('card-text');
-	cardHumidity.textContent = `Humidity: ${humidity}%`;
+  const cardHumidity = document.createElement('p');
+  cardHumidity.classList.add('card-text');
+  cardHumidity.textContent = `Humidity: ${humidity}%`;
 
-	const weatherIcon = document.createElement('img');
-	weatherIcon.src = `https://openweathermap.org/img/w/${icon}.png`;
-	weatherIcon.alt = description;
+  const weatherIcon = document.createElement('img');
+  weatherIcon.src = `https://openweathermap.org/img/w/${icon}.png`;
+  weatherIcon.alt = description;
 
-	cardBody.appendChild(cardTitle);
-	cardBody.appendChild(cardSubtitle);
-	cardBody.appendChild(cardTemperature);
-	cardBody.appendChild(cardWind);
-	cardBody.appendChild(cardHumidity);
-	cardBody.appendChild(weatherIcon);
-	card.appendChild(cardBody);
+  cardBody.appendChild(cardTitle);
+  cardBody.appendChild(cardSubtitle);
+  cardBody.appendChild(cardTemperature);
+  cardBody.appendChild(cardWind);
+  cardBody.appendChild(cardHumidity);
+  cardBody.appendChild(weatherIcon);
+  card.appendChild(cardBody);
 
-	return card;
+  return card;
 }
+
 
 // Function to display the 5-day weather forecast for a given city
 function displayForecast(cityName) {
-	// const forecastURL = `${API_LINK}forecast?q=${cityName}&appid=${API_KEY}${API_UNITS}`;
-	const forecastURL = `${API_LINK}lat=44.34&lon=10.99&appid=${API_KEY}${API_UNITS}`;
+  // const forecastURL = `${API_LINK}forecast?q=${cityName}&appid=${API_KEY}${API_UNITS}`;
+  const forecastURL = `${API_LINK}lat=44.34&lon=10.99&appid=${API_KEY}${API_UNITS}`;
 
-	fetch(forecastURL)
-		.then((response) => response.json())
-		.then((data) => {
-			const forecastData = data.list.filter((forecast) =>
-				forecast.dt_txt.includes('12:00:00')
-			);
-			console.log(data);
-			const forecastCardsContainer = document.createElement('div');
-			forecastCardsContainer.classList.add('row');
+  fetch(forecastURL)
+    .then(response => response.json())
+    .then(data => {
+      const forecastData = data.list.filter(forecast => forecast.dt_txt.includes('12:00:00'));
+console.log(data)
+      const forecastCardsContainer = document.createElement('div');
+      forecastCardsContainer.classList.add('row');
 
-			forecastData.forEach((forecast) => {
-				const forecastCard = createWeatherCard(forecast);
-				forecastCardsContainer.appendChild(forecastCard);
-			});
+      forecastData.forEach(forecast => {
+        const forecastCard = createWeatherCard(forecast);
+        forecastCardsContainer.appendChild(forecastCard);
+      });
 
-			// Clear the current weather and display the forecast cards
-			// currentWeather.innerHTML = '';
-			currentWeather.appendChild(forecastCardsContainer);
-		})
-		.catch((error) => {
-			console.log(error);
-		});
+      // Clear the current weather and display the forecast cards
+      currentWeather.appendChild(forecastCardsContainer);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 }
 
 searchButton.addEventListener('click', function (e) {
-	e.preventDefault();
-	getWeather();
+  e.preventDefault();
+  getWeather();
 });
+
+
+
+// cityButton.addEventListener('click', function (e) {
+//   e.preventDefault();
+//   getWeather();
+// });
+
 
 // Event listener for the city button to display the 5-day weather forecast for the input city
 cityButton.addEventListener('click', () => {
-	const cityName = input.value.trim();
-	displayForecast(cityName);
+  const cityName = input.value.trim();
+  displayForecast(cityName);
 });
-
-//local storage
-let cities = [];
-
-if (localStorage.getItem('cities')) {
-  cities = JSON.parse(localStorage.getItem('cities'));
-}
-
-searchButton.addEventListener('click', () => {
-  const city = input.value.trim();
-  if (city) {
-    cities.push(city);
-    localStorage.setItem('cities', JSON.stringify(cities));
-    // rest of the code to display the weather for the selected city
-  }
-});
-
-function displayCities() {
-  listOfCities.innerHTML = '';
-  cities.forEach((city) => {
-    const button = document.createElement('button');
-    button.textContent = city;
-    button.classList.add('btn', 'btn-secondary', 'mr-1', 'mb-1');
-    button.addEventListener('click', () => {
-      input.value = city;
-      getWeather();
-    });
-    listOfCities.appendChild(button);
-  });
-}
-
-if (localStorage.getItem('cities')) {
-  cities = JSON.parse(localStorage.getItem('cities'));
-  displayCities();
-}
+ 
