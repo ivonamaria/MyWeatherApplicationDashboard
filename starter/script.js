@@ -34,7 +34,7 @@ const getWeather = () => {
 
     // Create a title element for the city
     const titleEl = document.createElement('h1');
-    titleEl.textContent = `${city} (${moment().format('MMM D, YYYY')})`;
+    titleEl.textContent = `${city} (${moment().format('D MMM YYYY')})`;
     currentWeather.appendChild(titleEl);
 
     // Create a weather icon element
@@ -72,7 +72,8 @@ const getWeather = () => {
 function createWeatherCard(forecast) {
   // const date = forecast.dt_txt.split(' ')[0];
   const dateObj = new Date(forecast.dt_txt);
-const date = dateObj.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  const date = dateObj.toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  
 
   const temperature = Math.round(forecast.main.temp);
   const icon = forecast.weather[0].icon;
@@ -151,7 +152,6 @@ searchButton.addEventListener('click', function (e) {
   e.preventDefault();
   getWeather();
 });
-
 
 // Event listener for the city button to display the 5-day weather forecast for the input city
 cityButton.addEventListener('click', () => {

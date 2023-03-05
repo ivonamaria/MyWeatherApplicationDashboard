@@ -10,6 +10,7 @@
   justify-content: center;
 }
 
+
 .weather-search {
   margin: 20px;
   position: relative;
@@ -21,11 +22,13 @@
   border-radius: 5px;
   border: none;
   width: 300px;
+  height: 200px;
   margin-right: 10px;
 }
 
 h1 {
   color: #010000;
+  text-transform: uppercase;
 }
 
 
@@ -42,8 +45,8 @@ h1 {
     cursor: pointer;
   }
   
-  .search-button:hover {
-      background-color: #90b3b5;
+  #search-button:hover {
+      background-color: #cad9e3;
   }
    
 
