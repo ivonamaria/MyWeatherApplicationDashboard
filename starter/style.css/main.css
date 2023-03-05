@@ -76,16 +76,20 @@
     }
     
     .card-body {
-        /* background-image: url("/assets/clouds-1282314_1920.jpg");
-        background-repeat: no-repeat;
-        background-size: cover; */
-        padding: 5px;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+      padding: 5px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: 0.3s;
     }
-    
+    .card-body:hover {
+      background-image: url("/assets/clouds-1282314_1920.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-blend-mode: darken;
+      border-radius: 6px;
+    }
     .card-subtitle {
         margin-bottom: 10px;
         font-size: 40px;
