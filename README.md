@@ -10,9 +10,9 @@ Please click [Repository Github link](https://github.com/ivonamaria/MyWeatherApp
 
 # Screenshots 
 
-[Search Button](/assets/Screenshot%202023-03-05%20at%2018.45.20.png)
+Click to view image - [Search Button](/assets/Screenshot%202023-03-05%20at%2018.45.20.png)
 
-[Weather Cards](/assets/Screenshot%202023-03-05%20at%2018.45.45.png)
+Click to view image - [Weather Cards](/assets/Screenshot%202023-03-05%20at%2018.45.45.png)
 
 # Credits
 

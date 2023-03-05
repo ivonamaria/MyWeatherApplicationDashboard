@@ -38,7 +38,7 @@ h1 {
     width: 184px;
     height: 42px;
     margin-left: 20px;
-    background-color: rgb(146, 192, 210);
+    background-color: rgb(113, 191, 209);
     color: rgb(3, 3, 3);
     border: solid 1px rgb(130, 156, 161);
     border-radius: 5px;
@@ -95,7 +95,7 @@ h1 {
   }
 
  section {
-    background-image: url("/img/clouds-1282314_1920.jpg");
+    background-image: url('/img/clouds-1282314_1920.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
