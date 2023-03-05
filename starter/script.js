@@ -5,8 +5,6 @@ const input = document.querySelector('#search-input');
 const currentWeather = document.querySelector('#today');
 const cityButton = document.querySelector('#city-button');
 
-
-
 // Variables needed for API call
 const API_LINK = 'https://api.openweathermap.org/data/2.5/forecast?';
 const API_KEY = '30abde8af5dc54f445196160c7e3f072';
