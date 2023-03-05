@@ -1,131 +1,136 @@
 .weather-header {
-    background-color: #010000;
-    padding: 20px;
-  }
-  
-  .form-inline {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .weather-search {
-    margin: 20px;
-    position: relative;
-  }
-  
-  .search-input {
+  background-color: #010000;
+  padding: 20px;
+}
+
+.form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-search {
+  margin: 20px;
+  position: relative;
+}
+
+.search-input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  width: 300px;
+  margin-right: 10px;
+}
+
+h1 {
+  color: #010000;
+}
+
+
+#search-button {
     padding: 10px;
     font-size: 16px;
+    width: 184px;
+    height: 42px;
+    margin-left: 20px;
+    background-color: rgb(146, 192, 210);
+    color: rgb(3, 3, 3);
+    border: solid 1px rgb(130, 156, 161);
     border-radius: 5px;
-    border: none;
-    width: 300px;
-    margin-right: 10px;
+    cursor: pointer;
   }
   
-  h1 {
-    color: #010000;
+  .search-button:hover {
+      background-color: #90b3b5;
+  }
+   
+
+  #today {
+      display: block;
+      border: #cad9e3 solid 2px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 25px;
+      padding: 20px ;
+      background-color: rgb(255, 255, 255, 0.);
+      margin: 20px;
+  }
+  
+  .card {
+      flex: 1;
+      padding: 20px 20px;
+      height: 300px;
+      width: 100%;
+      margin-right: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .weather-cards-container {
+      margin: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #333;
+  }
+  
+  .card-body {
+    padding: 5px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: .5s;
+  }
+  
+  .card-body:hover {
+ background-color: rgb(252, 255, 255);
+ opacity: 60%;
+    border-radius: 8px;
+    cursor: pointer;
   }
 
+ section {
+    background-image: url("/assets/clouds-1282314_1920.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    }
   
-  .search-button {
-      padding: 10px;
+  .card-subtitle {
+      margin-bottom: 10px;
+      font-size: 40px;
+      font-weight: bold;
+  }
+  
+  .card-text {
+      margin: 10px 20px;
       font-size: 16px;
-      width: 184px;
-      height: 42px;
-      margin-left: 20px;
-      background-color: rgb(146, 192, 210);
-      color: rgb(3, 3, 3);
-      border: solid 1px rgb(130, 156, 161);
-      border-radius: 3px;
-      cursor: pointer;
-    }
-    
-    .search-button:hover {
-        background-color: #90b3b5;
-    }
-     
- 
-    #today {
-        display: block;
-        border: #efdada solid 2px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        border-radius: 25px;
-        padding: 20px ;
-        background-color: rgb(255, 255, 255, 0.);
-        margin: 20px;
-    }
-    
-    .card {
-        flex: 1;
-        padding: 20px 20px;
-        height: 300px;
-        width: 100%;
-        margin-right: 20px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    }
-    
-    .weather-cards-container {
-        margin: 30px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        background-color: #333;
-    }
-    
-    .card-body {
-      padding: 5px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: 0.3s;
-    }
-    .card-body:hover {
-      background-image: url("/assets/clouds-1282314_1920.jpg");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-blend-mode: darken;
-      border-radius: 6px;
-    }
-    .card-subtitle {
-        margin-bottom: 10px;
-        font-size: 40px;
-        font-weight: bold;
-    }
-    
-    .card-text {
-        margin: 10px 20px;
-        font-size: 16px;
-        line-height: 16px;
-    }
-    
-    .card-icon {
-        font-size: 20px;
-    }
+      line-height: 16px;
+  }
+  
+  .card-icon {
+      font-size: 20px;
+  }
+  
+  img {
+      position: relative; 
+     display: flex;
+      height: 60px;
+      width: 60px;
+  }
     
     img {
-        position: relative; 
-       display: flex;
-        height: 60px;
-        width: 60px;
+      position: relative;
+      display: flex;
+      height: 60px;
+      width: 60px;
+    }
+
+    #forecast {
+      background-color: #fff;
     }
     
-    /* section {
-    } */
-    
-      
-      img {
-        position: relative;
-        display: flex;
-        height: 60px;
-        width: 60px;
-      }
 
-      #forecast {
-        background-color: #fff;
-      }
-      
-  
